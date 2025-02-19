@@ -1,11 +1,10 @@
-const { status, jsonStatus, messages } = require('../helper/api.responses')
-
 module.exports = (app) => {
   app.use('/api', [
+    require('../models-routes-services/users/auth/routes'),
+    require('../models-routes-services/category/routes')
   ])
 
-
   app.get('*', (req, res) => {
-    return res.status(status.NotFound).jsonp({ status: jsonStatus.NotFound, message: messages[req.userLanguage].not_found.replace('##', 'route') })
+    return res.status(404).jsonp({ status: 404, message: 'Route Not Found' })
   })
 }

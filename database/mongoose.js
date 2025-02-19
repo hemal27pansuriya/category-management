@@ -5,7 +5,7 @@ const config = require('../config/config')
 
 const DBConnect = connection(config.DB_URL, 'MongoDB')
 
-function connection(DB_URL, DB = '') {
+function connection (DB_URL, DB = '') {
   try {
     const dbConfig = { readPreference: 'secondaryPreferred' }
 

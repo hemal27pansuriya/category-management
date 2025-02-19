@@ -15,7 +15,6 @@ app.use(express.json())
 app.use(hpp())
 require('./middlewares/routes')(app) // Load the routes into the express application
 
-
 app.listen(config.PORT, () => console.log('Magic happens on port :' + config.PORT))
 
 module.exports = app
