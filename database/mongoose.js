@@ -16,7 +16,6 @@ function connection (DB_URL, DB = '') {
     handleCatchError(error)
   }
 }
-// mongoose.set('debug', true)
 module.exports = {
   DBConnect
 }

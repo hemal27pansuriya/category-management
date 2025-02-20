@@ -17,7 +17,6 @@ const validate = function (req, res, next) {
 const isUserAuthenticated = async (req, res, next) => {
   try {
     const token = req.header('Authorization')
-    console.log('token-------', token)
     if (!token) {
       return res.status(401).jsonp({
         status: 401,
@@ -29,7 +28,6 @@ const isUserAuthenticated = async (req, res, next) => {
     try {
       user = jwt.verify(token, JWT_SECRET_USER)
     } catch (err) {
-      console.log('2error-----------', err)
       return res.status(401).jsonp({
         status: 401,
         message: 'Please login again'
@@ -37,7 +35,6 @@ const isUserAuthenticated = async (req, res, next) => {
     }
 
     if (!user) {
-      console.log('2error-----------qq')
       return res.status(401).jsonp({
         status: 401,
         message: 'Please login again'
@@ -46,7 +43,6 @@ const isUserAuthenticated = async (req, res, next) => {
 
     const userData = await UsersModel.findOne({ _id: user._id, sJwtToken: token }).lean()
     if (!userData) {
-      console.log('2error-----------qq')
       return res.status(401).jsonp({
         status: 401,
         message: 'Please login again'

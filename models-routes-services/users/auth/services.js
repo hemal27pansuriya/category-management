@@ -11,7 +11,6 @@ const userAuth = {}
 userAuth.register = async (req, res) => {
   try {
     const { sUsername, sEmail, sMobNum, sPassword } = req.body
-
     const isExist = await UsersModel.findOne({ $or: [{ sEmail }, { sMobNum }, { sUsername }] }).lean()
     if (isExist) return res.status(409).jsonp({ status: 409, message: 'User already exists' })
 

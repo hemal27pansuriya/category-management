@@ -6,7 +6,6 @@ const categoryService = {}
 // Create category
 categoryService.createCategory = async (req, res) => {
   try {
-    console.log('******************************', req.body)
     const { sName, iParentId, eStatus } = req.body
 
     if (iParentId) {
